@@ -94,7 +94,7 @@ class CommonTree
     // level 保留多少级 0 表示不限制
     
     // $is_show_all是否显示所有子分类
-    function getAllData($id, $selected, $return_array = TRUE, $level = 0, $is_show_all = TRUE)
+    function getAllData($id, $selected = 0, $return_array = TRUE, $level = 0, $is_show_all = TRUE)
     {
         $result = $this->getChilds($id);
         
@@ -269,10 +269,10 @@ class CommonTree
             [parent_id] => 0
             [info] => Array
             (
-            [has_children] => 2
-            [parent_id] => 0
-            [status] => 1
-            [sort_order] => 500
+                [has_children] => 2
+                [parent_id] => 0
+                [status] => 1
+                [sort_order] => 500
             )
 
             [children] => Array
@@ -347,5 +347,40 @@ class CommonTree
         return $tree;
     }
 }
-
 ?>
+
+
+
+<?php
+/**
+*测试用例
+*/
+$arr = array(
+    array('id'=>10,'parent_id'=>0,'data'=>'A','info'=>array('sort'=>10)),
+    array('id'=>11,'parent_id'=>0,'data'=>'D','info'=>array('sort'=>18)),
+    array('id'=>12,'parent_id'=>0,'data'=>'F','info'=>array('sort'=>19)),
+    array('id'=>13,'parent_id'=>10,'data'=>'A1','info'=>array('sort'=>190)),
+    array('id'=>14,'parent_id'=>10,'data'=>'A2','info'=>array('sort'=>180)),
+    array('id'=>15,'parent_id'=>13,'data'=>'A11','info'=>array('sort'=>181)),
+    array('id'=>16,'parent_id'=>13,'data'=>'A12','info'=>array('sort'=>19)),
+    array('id'=>17,'parent_id'=>15,'data'=>'A111','info'=>array('sort'=>192)),
+    array('id'=>19,'parent_id'=>11,'data'=>'D1','info'=>array('sort'=>193)),
+    array('id'=>21,'parent_id'=>19,'data'=>'D11','info'=>array('sort'=>194)),
+    array('id'=>25,'parent_id'=>21,'data'=>'D111','info'=>array('sort'=>195)),
+    array('id'=>31,'parent_id'=>12,'data'=>'F1','info'=>array('sort'=>199)),
+);
+$tree = new CommonTree;
+foreach($arr AS $v){
+    $tree->setNode($v['id'],$v['parent_id'],$v['data'],$v['info']);
+}
+//以数组的形式返回
+//$res = $tree->getAllData(0);
+//echo '<pre>';
+//print_r($res);
+?>
+<select name="article_category">
+<?php
+//以下拉菜单的形式返回
+echo $tree->getAllData(0,0,false);
+?>
+</select>
