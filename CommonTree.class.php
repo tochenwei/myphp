@@ -258,64 +258,64 @@ class CommonTree
     
     /*
      * 单独的方法用来格式化children例如:
-     * Array
-     * (
-     * [1] => Array
-     * (
-     * [id] => 1
-     * [data] => 台历
-     * [level] => 0
-     * [has_children] => 2
-     * [parent_id] => 0
-     * [info] => Array
-     * (
-     * [has_children] => 2
-     * [parent_id] => 0
-     * [status] => 1
-     * [sort_order] => 500
-     * )
-     *
-     * [children] => Array
-     * (
-     * [0] => Array
-     * (
-     * [id] => 4
-     * [data] => 大台历
-     * [level] => 1
-     * [has_children] => 0
-     * [parent_id] => 1
-     * [info] => Array
-     * (
-     * [has_children] => 0
-     * [parent_id] => 1
-     * [status] => 1
-     * [sort_order] => 500
-     * )
-     *
-     * )
-     *
-     * [1] => Array
-     * (
-     * [id] => 3
-     * [data] => 小台历
-     * [level] => 1
-     * [has_children] => 0
-     * [parent_id] => 1
-     * [info] => Array
-     * (
-     * [has_children] => 0
-     * [parent_id] => 1
-     * [status] => 1
-     * [sort_order] => 500
-     * )
-     *
-     * )
-     *
-     * )
-     *
-     * )
-     *
-     * )
+     Array
+    (
+        [1] => Array
+        (
+            [id] => 1
+            [data] => 台历
+            [level] => 0
+            [has_children] => 2
+            [parent_id] => 0
+            [info] => Array
+            (
+            [has_children] => 2
+            [parent_id] => 0
+            [status] => 1
+            [sort_order] => 500
+            )
+
+            [children] => Array
+            (
+                [0] => Array
+                (
+                    [id] => 4
+                    [data] => 大台历
+                    [level] => 1
+                    [has_children] => 0
+                    [parent_id] => 1
+                    [info] => Array
+                    (
+                        [has_children] => 0
+                        [parent_id] => 1
+                        [status] => 1
+                        [sort_order] => 500
+                    )
+
+                )
+
+                [1] => Array
+                (
+                    [id] => 3
+                    [data] => 小台历
+                    [level] => 1
+                    [has_children] => 0
+                    [parent_id] => 1
+                    [info] => Array
+                    (
+                        [has_children] => 0
+                        [parent_id] => 1
+                        [status] => 1
+                        [sort_order] => 500
+                    )
+
+                )
+
+            )
+
+        )
+
+    )
      */
     function genChildren($items, $id = 'id', $pid = 'parent_id', $son = 'children')
     {
