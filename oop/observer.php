@@ -7,11 +7,12 @@
 //小偷类
 class Thief{
     private $_observers = array();
-
-    public function register($sub){ /*注册观察者 */
-        $this->_observers[] = $sub;
+    public $money = 0;
+    public function register($observer){ /*注册观察者 */
+        $this->_observers[] = $observer;
     } 
     public function trigger($func,array $data){  /*外部统一访问*/
+        $this->money=isset($data['money']) ? floatval($data['money']) : 0;
         if(!empty($this->_observers)){
             foreach($this->_observers as $observer){
                 /**mixed call_user_func_array ( callable $callback , array $param_arr )
@@ -34,7 +35,8 @@ class Police{
 /*  测试    */
 $thief = new Thief();
 $thief->register(new Police());
-$data=[['name'=>'xiaoming','city'=>'xiamen','time'=>'2016-11-04']];
+$data=['info'=>['name'=>'xiaoqiang','city'=>'xiamen','time'=>'2016-11-04'],'money'=>1000000];
 $thief->trigger('notice',$data);
+echo $thief->money;
 /***********输出结果*************/
-//Array ( [name] => xiaoming [city] => xiamen [time] => 2016-11-04 )
+//Array ( [name] => xiaoqiang [city] => xiamen [time] => 2016-11-04 ) 1000000
