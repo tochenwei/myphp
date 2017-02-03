@@ -20,7 +20,7 @@ function curlrequest($url,$data,$method='post'){
     return $document;
 }
  
-$url = 'http://test.cc/rest/server.php';
+$url = 'http://test.cc/myphp/rest/server.php';
 $data = array("content"=>"request from put method");
 $data = serialize($data);
 $return = curlrequest($url, $data, 'put');
