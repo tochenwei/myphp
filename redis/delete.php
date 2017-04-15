@@ -5,7 +5,7 @@
 返回值：删除的项数
 */ 
 $redis = new redis();  
-$redis->connect('115.47.40.226', 6379);  
+$redis->connect('127.0.0.1', 6379);  
 $redis->set('test',"1111111111111");  
 echo $redis->get('test');   //结果：1111111111111  
 $redis->delete('test');  
