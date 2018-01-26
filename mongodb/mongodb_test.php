@@ -294,7 +294,7 @@ $coll->update(
 array('b'=>1),
 array('$pop=>array('a'=>1)),
 )
-删除某数组阶段的第一个元素
+删除某数组节点的第一个元素
 $coll->update(
 array('b'=>1),
 array('$pop=>array('a'=>-1)),
