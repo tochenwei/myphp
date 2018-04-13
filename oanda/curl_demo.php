@@ -5,7 +5,7 @@ function post($url, array $data,$json=false,$userAgend='')
     
     if($json){
         $headers = [
-            'Authorization: Bearer 9f0bb1476459fc92ae40f4fc4fb242de-96ad0094b6a356bca0b98ac59d942b24'
+            'Authorization: Bearer 111111111111-22222222222222'
         ];
         $req_data = json_encode($data);
         $headers[] = 'Content-Type: application/json; charset=utf-8';
