@@ -1,8 +1,14 @@
 <?php
    //连接本地的 Redis 服务
    $redis = new Redis();
-   $redis->connect('115.47.40.226', 6379);
-   echo "Connection to server sucessfully";
+   $result = $redis->connect('127.0.0.1', 6379);
+   var_dump($result);
+   echo "<br/>";
+   if($result){
+	echo "Connection to server sucessfully";
+   }else{
+	   echo "Connection to server failed";
+   }
    //存储数据到列表中
    $redis->set("x", "Redis");
    $redis->set("y", "Mongodb");
@@ -22,5 +28,11 @@
 	   echo $redis->get("key_expire");
 	   echo '<br/>';
    }
-   var_dump($redis->setnx('key_expire', 'value_60'));
+   $nx_result = $redis->setnx('key_expire_not_exist', 'value_60');
+   var_dump($nx_result);
+   if($nx_result){
+       $redis->expire('key_expire_not_exist', 60);
+	   $redis->exec();
+	   echo "exec";
+   }
 ?>

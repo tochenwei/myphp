@@ -2,7 +2,7 @@
 require 'RedisLock.class.php';
 
 $config = array(
-    'host' => '115.47.40.226',
+    'host' => '127.0.0.1',
     'port' => 6379,
     'index' => 0,
     'auth' => '',
